@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head> 
+        <title>
+            Advance Search
+        </title>
+        <link rel="stylesheet" href="advanceSearch.css">
+    </head>
+
+    <body>
+        
+        <div id="upperDiv">
+            <img src="googleLogo.jpg">
+            <a href="index.html" style="padding-left: 1000px; padding-bottom: 10px;">Google Search</a>
+        </div>
+        <h1>Advance Search</h1>
+        <hr>
+        
+        <div style="margin-top: 100px;">
+
+            <div class="sections" style="padding-bottom: 10px;">
+                <h2>Find pages with...</h2>
+                <p style="padding-left: 900px;">To do this in the search box.</p>
+            </div>
+            
+            
+            <form action="https://www.google.com/search">
+
+                <div class="sections">
+                    <p>all these words:</p>
+                    <input type="text" name="as_q"/>
+                    <p class="leftText">Type the important words: tri-colour rat terrier</p>
+                </div>
+
+                <div class="sections">
+                    <p>this exact word or phrase:</p>
+                    <input type="text" name="as_epq"/>
+                    <p class="leftText">Put exact words in quotes: "rat terrier"</p>
+                </div>
+
+                <div class="sections">
+                    <p>any of these words:</p>
+                    <input type="text" name="as_oq"/>
+                    <p class="leftText">Type OR between all the words you want: miniature OR standard</p>
+                </div>
+
+                <div class="sections">
+                    <p>none of these words:</p>
+                    <input type="text" name="as_eq"/>
+                    <p class="leftText">Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</p>
+                </div>
+
+                <input id="button" type="submit" value="Advanced Search"/>
+                
+            </form>
+
+        </div>
+
+
+    </body>
+
+</html>

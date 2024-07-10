@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html"%}
+
+{% block body %}
+    <h2>Category: <strong>{{category}}</strong> </h2>
+    
+    <ol>
+        {% for listing in listings %}
+        
+        <li style="list-style-type: none;">
+            <div style="border: 1px solid grey; width: 500px; padding: 5px; margin: 5px;">
+                
+                <ul style="list-style-type: none;">
+                    {% if listing.imageUrl %}
+                        <li><img height="100px" width="auto" src="{{listing.imageUrl}}" alt="{{listing.title}}"></li>
+                    {% endif %}
+                    <li><strong>{{listing.title}}</strong></li>
+                    <li><a href="{% url 'categoryPage' listing.category %}">{{listing.category}}</a></li>
+                    <li>₹{{listing.price}}</li>
+                    <li><a href="{% url 'listingPage' id=listing.id %}"><button>View</button></a></li>
+                </ul>
+
+            </div>
+        </li>
+
+        {% endfor %}
+
+    </ol>
+    
+
+{% endblock %}

@@ -1,0 +1,43 @@
+.body{
+    padding: 10px;
+}
+
+#newPost{
+    border: 1px solid black;
+    padding: 10px;
+    width: 50%;
+
+    form{
+        width: 100%;
+    }
+    textarea{
+        width: 100%;
+    }
+}
+
+.postDiv{
+    border: 1px solid black;
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+#profile{
+    border: 1px solid black;
+    padding: 10px;
+    width: 50%;
+}
+
+button{
+    border-radius: 20%;
+    background-color: white;
+}
+
+.likePost{
+    border-color: yellow;
+}
+
+.editPost{
+    border-color: blue;
+}
+    

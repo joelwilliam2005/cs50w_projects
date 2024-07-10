@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    font-family: 'Ubuntu-Regular', sans-serif;
+}
+
+* {
+    box-sizing: border-box; /* Apply border-box to all elements */
+}
+
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: 'chats/fonts/Ubuntu-Regular.ttf';
+}
+
+#main_div{
+    background-color: white;
+    border: 2px solid black;
+    height: calc(100vh - 0.2vh);
+    margin: 0.1vh;
+    border-radius: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

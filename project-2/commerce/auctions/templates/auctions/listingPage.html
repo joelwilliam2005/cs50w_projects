@@ -1,0 +1,171 @@
+{% extends './layout.html' %}
+
+{% block body %}
+
+<h2>Listing: <strong>{{listing}}</strong></h2>
+<div>
+                
+    <ul style="list-style-type: none;">
+        {% if listing.imageUrl %}
+            <li><img height="400px" width="auto" src="{{listing.imageUrl}}" alt="{{listing.title}}"></li>
+        {% endif %}
+
+        <li>Price: <strong>₹{{listing.price}}</strong></li>
+
+        {% if isWinner %}
+
+            <h3><span style="color: blue;"> Congratulations! </span>You have won the auction.</h3>
+
+        {% endif %}
+
+        {% if isOwner %}
+
+            {% if listing.activeStatus %}
+                <li>
+                    <form action="{% url 'closeAuction' listing.id %}" method="post">
+                        {% csrf_token %}
+                        <input style="background-color: red;" type="submit" value="Close Auction">
+                    </form>
+                </li>
+            {% else %}
+                <li>
+                    <input style="background-color: grey;" type="submit" value="Auction Closed.">
+                </li>
+
+            {% endif %}
+
+        {% endif %}
+
+        <div style="border: 1px solid grey; margin-top: 5px; margin-bottom: 5px; padding: 5px; width: 500px;">
+
+        <li>Total Bids: <strong>{{totalBids}}</strong></li>
+        {% if totalBids %}
+            <li>Highest Bid: <strong>₹{{maxValue}}</strong></li>
+        {% endif %}
+        
+        {% if not isOwner %}
+
+            {% if isUserHighestBidder %}
+                <li><strong>Your bid is the current bid.</strong></li>
+            {% elif isUserHighestBidder is None %}
+                <li><strong></strong></li>
+            {% else %}
+                <li><strong>Your bid is not the current bid.</strong></li>
+            {% endif %}
+    
+
+            {% if user.is_authenticated and listing.activeStatus %}
+                <li>
+                    <form action="{% url 'addBid' listing.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="bidValue" placeholder="Enter Bid">
+                        <input type="submit" value="Bid">
+                    </form>
+                </li>
+
+            {% endif %}
+
+        {% endif %}
+
+        </div>
+
+        <div style="border: 1px solid grey; margin-top: 5px; margin-bottom: 5px; padding: 5px; width: 500px;" >
+
+            <li>Description: {{listing.description}}</li>
+            <li>Listed By: <strong>{{listing.owner}}</strong></li>
+            <li>Category: <a href="{% url 'categoryPage' listing.category %}">{{listing.category}}</a></li>
+
+            {% if listing.activeStatus %}
+                <li>Status: <strong>Active</strong></li>
+            {% else %}
+                <li>Status: <strong>Inactive</strong></li>
+            {% endif %}  
+
+        </div>
+          
+        
+        {% if user.is_authenticated and listing.activeStatus %}
+
+            {% if inWatchlist %}
+
+            <li>
+                <form action="{% url 'removeWatchlist' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <input style="background-color: red;" type="submit" value="Remove From Watchlist">
+                </form>
+            </li>
+            
+            {% else %}
+
+            <li>
+                <form action="{% url 'addWatchlist' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <input style="background-color: green;" type="submit" value="Add To Watchlist">
+                </form>
+            </li>
+
+            {% endif %}
+            
+            <li>
+
+                <div style="border: 1px solid grey; margin-top: 5px; margin-bottom: 5px; padding: 5px; width: 500px;" >
+
+                    <form action="{% url 'addComment' listing.id%}" method="post">
+                        {% csrf_token %}
+                        <textarea placeholder="Comment Here" name="content" style="width: 485px;"></textarea>
+                        <br/>
+                        <input type="submit" value="Submit">
+                    </form>
+                
+                </div>
+                
+
+            </li>
+        
+        {% endif %}
+
+        <li>
+
+            <div style="border: 1px solid grey; width: 500px; padding: 10px;" >
+
+                <h3>Comments:</h3>
+            
+                <ol>
+                    {% if comments %}
+                        {% for comment in comments %}
+                
+                            <li>
+                
+                                <div style="border: 1px solid grey; width: 400px; padding: 2px; margin: 2px;">
+                
+                                    {{comment.content}}
+                                    <br/>
+                                    By: <strong>{{comment.writer}}</strong>
+                    
+                                </div>
+                
+                            </li>
+                            
+                
+                        {% endfor %}
+                            
+                    {% else %}
+
+                        No comments yet.
+                    
+                    {% endif %}
+            
+                </ol>
+            
+            
+            </div>
+            
+
+        </li>
+
+    </ul>
+
+</div>
+
+
+{% endblock %}

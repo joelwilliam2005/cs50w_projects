@@ -1,0 +1,35 @@
+div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+#logo{
+    margin: 10px;
+}
+
+#searchBar{
+    border-radius: 50px;
+    height: 35px;
+    width: 500px;
+    margin-top: 10px;
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+.buttonBelowSearch{
+
+    margin-right: 5px; 
+    margin-left: 5px;
+    background-color: white;
+}
+
+#searchText{
+
+    padding-left: 1000px;
+
+}

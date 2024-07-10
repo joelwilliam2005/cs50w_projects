@@ -1,0 +1,80 @@
+
+* {
+    box-sizing: border-box; /* Apply border-box to all elements */
+}
+
+#main_div{
+    background-color: white;
+    border: 2px solid black;
+    height: calc(100vh - 0.2vh);
+    margin: 0.1vh;
+    border-radius: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login_and_register_div{
+    margin: 1vh;
+    /* border: 1px solid black; */
+    border-radius: 2vh;
+    height: auto;
+    width: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+}
+
+.login_and_register_input_text{
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+    border: 1px solid black;
+    border-radius: 1vh;
+    outline: none;
+    /* text-align: center; */
+}
+.login_and_register_input_text:focus{
+    border: 2px solid black;
+}
+
+.login_and_register_submit_button{
+    width: 100%;
+    height: 5vh;
+    border: 1px solid black;
+    border-radius: 1vh;
+    background-color: black;
+    color: white;
+}
+
+#register_div{
+    /* text-align: center; */
+    height: auto;
+    padding: 2vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+#login_div{
+    /* text-align: center; */
+    height: auto;
+    padding: 2vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: 'chats/fonts/Ubuntu-Regular.ttf';
+}
+
+@media(width<=600px){
+
+    #login_and_register_div{
+        width: auto;
+        height: auto;
+    }
+
+}

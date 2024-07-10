@@ -1,0 +1,37 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    {% for item in list %}
+        <div class="postDiv">
+            <a href="{% url 'profile' item.poster %}"><strong id="username" >{{ item.poster }}</strong></a>
+            <br>
+            <div id="content{{item.id}}">{{ item.content }}</div>
+            {{ item.timestamp }}
+            <br>
+            Likes: <text id="likes{{item.id}}">{{ item.likes }}</text>
+            <br>
+            {% if request.user.is_authenticated %}
+                {% if request.user == item.poster %}
+                    <button class="editPost" value="{{item.id}}" >Edit</button>
+                {% else %}
+                    {% if item not in usersLikedPost %}
+                    <button class="likePost" value="{{item.id}}">Like</button>
+                    {% else %}
+                    <button class="likePost" value="{{item.id}}">Unlike</button>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>        
+    {% endfor %}
+    <div>
+
+        {% if list.has_previous %}
+            <a href="?page={{list.previous_page_number}}" ><button >Previous</button></a>
+        {% endif %}
+
+        {% if list.has_next %}
+            <a href="?page={{list.next_page_number}}" ><button>Next</button></a>
+        {% endif %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends './layout.html' %}
+
+{% block body %}
+
+    <form action="{% url 'createListing' %}" method="post">
+
+        {% csrf_token %}
+
+        <input type="text" placeholder="Title" name="title">
+
+        <br/>
+
+        <input type="text" placeholder="Category" name="category">
+
+        <br/>
+
+        <input type="text" placeholder="Price" name="price">
+
+        <br/>
+        
+        <input type="text" placeholder="Enter a URL for image." name="imageUrl">
+
+        <br/>
+
+        <textarea type="text" placeholder="Description" name="description" style="height: 20vh; width: 50%;"></textarea>
+
+        <br/>
+
+        <input type="submit" value="Create">
+        
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "network/layout.html" %} {% block body %}
+
+<div id="profile">
+  {% if userFound %}
+  
+    {% if userOnOwnProfile %}
+      <h4>Your Profile:</h4>
+      Username: <strong>{{user.username}}</strong>
+      <br />
+    {% else %}
+      <h4>Profile:</h4>
+      Username: <strong>{{user.username}}</strong>
+      <br />
+    {% endif %}
+
+  {% if not userOnOwnProfile and user.is_authenticated %}
+
+    {% if not followed %}
+      <a href="{% url 'follow' user.username %}"><button>Follow</button></a>
+    {% else %}
+    <a href="{% url 'unfollow' user.username %}"><button>Unfollow</button></a>
+    {% endif %}
+    <br />
+  {% endif %}
+  
+  Email: <strong>{{user.email}}</strong>
+  <br />
+  Followers: <strong>{{usersWhoFollowThisUserCount}}</strong>
+  <br />
+  Following: <strong>{{thisUserFollowsCount}}</strong>
+
+  <div id="profilePosts" style="border: 1px solid black; padding: 10px;">
+    All Posts by <strong>{{user.username}}</strong>:
+    {% for post in allPosts %}
+    <div class="postDiv">
+      <a href="{% url 'profile' post.poster %}"><strong id="username">{{ post.poster }}</strong></a>
+      
+      <br />
+      <div id="content{{post.id}}">{{ post.content }}</div>
+      {{ post.timestamp }}
+      <br />
+      Likes: <text id="likes{{post.id}}">{{ post.likes }}</text>
+      <br>
+      {% if userOnOwnProfile %}
+      <button class="editPost" value="{{post.id}}" >Edit</button>
+      {% else %}
+        {% if item not in usersLikedPost %}
+            <button class="likePost" value="{{post.id}}">Like</button>
+        {% else %}
+            <button class="likePost" value="{{post.id}}">Unlike</button>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <div>
+
+      {% if allPosts.has_previous %}
+          <a href="?page={{allPosts.previous_page_number}}" ><button >Previous</button></a>
+      {% endif %}
+    
+      {% if allPosts.has_next %}
+          <a href="?page={{allPosts.next_page_number}}" ><button>Next</button></a>
+      {% endif %}
+    
+    </div>
+
+  </div>
+</div>
+
+{% else %} 
+  <h4 style="color: red;">User not found.</h4>
+{% endif %}
+
+
+
+{% endblock %}

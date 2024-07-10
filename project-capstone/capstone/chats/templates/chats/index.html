@@ -1,0 +1,50 @@
+{% extends 'chats/layout.html' %}
+{% load static %}
+
+{% block body %}
+    <div id="index_div_1" >
+
+        <div id="upper_box" >
+            <h1>CHATS</h1>
+            <p>{{request.user.first_name}} {{request.user.last_name}} (<strong id="current_user" >{{request.user.username}}</strong>)</p>
+            <form action="{% url 'logout_user' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" id="logout" >Logout</button>
+            </form>
+            <button id="my_contacts" >My Contacts</button>
+            <button id="find_people" >Find People</button>
+            
+        </div>
+        
+        <div id="div_all_users" >
+            
+        </div>
+
+    </div>
+
+    <div id="index_div_2" >
+        <div id="contact_user_box" >
+            <text id="contact_user_box_username"><text id="contact_user_box_only_fullname" ></text> (<text id="contact_user_box_only_username" ></text>)</text>
+            
+            <button id="back_button" >Back</button>
+        </div>
+        <div id="messaging_box" >
+
+            <div id="messaging_box_messages_area" > 
+            </div>
+            <div id="messaging_box_typing_area" >
+                <textarea name="typing_area" id="typing_area" placeholder="Type Here"></textarea>
+                <button id="send_message" ><strong>✓</strong></button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'chats/index.css' %}">
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'chats/index.js' %}"></script>
+    <script>document.addEventListener('DOMContentLoaded',()=>{document.querySelector('#my_contacts').click()})</script>
+{% endblock %}

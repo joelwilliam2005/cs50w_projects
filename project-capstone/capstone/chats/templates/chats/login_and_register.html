@@ -1,0 +1,70 @@
+{% extends 'chats/layout.html' %}
+{% load static %}
+
+{% block body %}
+
+<div id="login_and_register_div">
+
+    <div id="register_div" >
+        
+        <h1><strong>CHATS</strong></h1>
+
+        <h4>Create an account</h4>
+
+        <form action="{% url 'login_and_register' %}" method="post">
+            {% csrf_token %}
+            
+            <input class="login_and_register_input_text" autofocus type="text" placeholder="First Name" name="first_name" />
+            <input class="login_and_register_input_text" type="text" placeholder="Last Name" name="last_name" />
+            
+            <input class="login_and_register_input_text" type="text" placeholder="Username" name="username" />
+            
+            <input class="login_and_register_input_text" type="password" placeholder="Password" name="password" />
+            <br>
+            <input class="login_and_register_submit_button" type="submit" value="Register" />
+            <input type="hidden" name="LoginOrRegister" value="Register">
+        </form>
+
+        <p style="font-size: 10px;" >Already have an account?</p>
+        <button class="login_and_register_submit_button" id="login_and_register_switch_button" >Login Here</button>
+        
+
+    </div>
+
+    <div id="login_div" >
+
+        <h1><strong>Chats</strong></h1>
+
+        <h4>Login with your account</h4>
+
+        <form action="{% url 'login_and_register' %}" method="post">
+            {% csrf_token %}
+            
+            <input autofocus class="login_and_register_input_text" type="text" placeholder="Username" name="username" />
+            
+            <input class="login_and_register_input_text" type="password" placeholder="Password" name="password" />
+            <br>
+            <input class="login_and_register_submit_button" type="submit" value="Login" />
+            <input type="hidden" name="LoginOrRegister" value="Login">
+        </form>
+
+        <p style="font-size: 10px;" >Don't have an account?</p>
+        <button class="login_and_register_submit_button" id="login_and_register_switch_button" >Register Here</button>
+        
+
+    </div>
+
+    
+  
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'chats/login_and_register.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'chats/login_and_register.css' %}">
+{% endblock %}
