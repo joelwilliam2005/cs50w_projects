@@ -1,6 +1,6 @@
 # CS50W Projects
 
-Welcome to my CS50W Projects repository! This repository contains the projects I completed as part of the HarvardX CS50W: Web Programming with Python and JavaScript course. Each project showcases different aspects of web development, including HTML, CSS, JavaScripta and Django.
+Welcome to my CS50W Projects repository! This repository contains the projects I completed as part of the HarvardX CS50W: Web Programming with Python and JavaScript course. Each project showcases different aspects of web development, including HTML, CSS, JavaScript and Django.
 
 ## Table of Contents
 
