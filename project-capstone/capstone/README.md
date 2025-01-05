@@ -3,6 +3,8 @@
 ## Introduction:
 **CHATS** is a real-time messaging web application similar to WhatsApp Web, where users can send and recieve messages in real-time with their contacts.
 
+Video Demo of the project: https://youtu.be/CYnTN0m8okI
+
 ## Technologies Used:
 
 - HTML
